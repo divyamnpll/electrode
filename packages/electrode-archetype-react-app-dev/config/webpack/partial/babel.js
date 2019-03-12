@@ -17,7 +17,7 @@ module.exports = function(options) {
     if (x.indexOf("cart-components-pos-ny") >= 0) return false;
     if (x.indexOf("cart-components-core") >= 0) return false;
     if (x.indexOf("order-summary-ny") >= 0) return false;
-    if (x.indexOf("feds-ny-core") >= 0) return false;
+  if (x.indexOf("feds-ny-core") >= 0) return false;
     if (x.indexOf("feds-wmt-header") >= 0) return false;
     if (x.indexOf("feds-wmt-footer") >= 0) return false;
     if (x.indexOf("wmreact-base") >= 0) return false;
@@ -30,7 +30,17 @@ module.exports = function(options) {
     if (x.indexOf("wmreact-modal") >= 0) return false;
     if (x.indexOf("cc-banner-ny") >= 0) return false;
     if (x.indexOf("wmreact-shipping-threshold-bar-ny") >= 0) return false;
+    if (x.indexOf("customer-store-locator") >= 0) return false;
+    if (x.indexOf("electrode-application") >= 0) return false;
+    //if (x.indexOf("wmreact-tempo-core") >= 0) return false;
+    if (x.indexOf("feds-scheduling-components") >= 0) return false;
+    if (x.indexOf("feds-tempo-modules") >= 0) return false;
+
+
+    //if (x.indexof("wmreact-tempo-core") >= 0) return false;
+
     if (x.indexOf("node_modules") >= 0) return true;
+
     if (x.indexOf(clientVendor) >= 0) return true;
     return false;
   };
@@ -43,7 +53,10 @@ module.exports = function(options) {
        ["babel-plugin-transform-object-rest-spread", {
         "useBuiltIns": true
       }],
-      "lodash"
+      "lodash",
+      ["transform-react-remove-prop-types", {
+     "mode": "wrap"
+      }]
      ],
      "env": {
        "node" : {
@@ -54,9 +67,11 @@ module.exports = function(options) {
        ["env", {
          "loose": true,
          "useBuiltIns": true,
-         "targets": {
-           "browsers": ["> 5%"]
-         },
+        //  "sourceType": "unambiguous",
+          "targets": {
+            "browsers": ["> 5%"]
+          },
+         "modules" : false,
          "debug": true,
          "exclude": [
            "transform-regenerator",
